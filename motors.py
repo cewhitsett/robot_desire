@@ -122,10 +122,10 @@ if __name__ == "__main__":
         time.sleep(5)
         steer.stop()
         print("BACKWARD")
-        drive.backward(50)
+        drive.reverse(50)
         time.sleep(5)
         drive.stop()
-        steer.backward(50)
+        steer.reverse(50)
         time.sleep(5)
         steer.stop()
         curr += 1
