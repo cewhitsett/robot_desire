@@ -108,7 +108,7 @@ class Arrow():
         GPIO.output(self.pin,GPIO.LOW)
 
 if __name__ == "__main__":
-    drive = Motor("MOTOR1",1)
+    drive = Motor("MOTOR1",2)
     steer = Motor("MOTOR2", 1)
 
     curr = 0
