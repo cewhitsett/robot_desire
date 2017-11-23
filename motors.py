@@ -108,11 +108,24 @@ class Arrow():
         GPIO.output(self.pin,GPIO.LOW)
 
 if __name__ == "__main__":
-    up = Arrow(3)
+    drive = Motor("MOTOR1",1)
+    steer = Motor("MOTOR2", 1)
+
     curr = 0
-    while curr<20:
-        up.on()
-        time.sleep(1)
-        up.off()
-        time.sleep(1)
+
+    while curr < 10:
+        print("FORWARD")
+        drive.forward(50)
+        time.sleep(5)
+        drive.stop()
+        steer.forward(50)
+        time.sleep(5)
+        steer.stop()
+        print("BACKWARD")
+        drive.backward(50)
+        time.sleep(5)
+        drive.stop()
+        steer.backward(50)
+        time.sleep(5)
+        steer.stop()
         curr += 1
