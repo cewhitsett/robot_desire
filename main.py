@@ -37,7 +37,7 @@ def main():
         img = frame.array
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-        faces = faceCascade.detectMultiscale(
+        faces = cv2.CascadeClassifier("/files/haarcascade_frontalface_default.xml").detectMultiscale(
             gray,
             scaleFactor=1.1,
             minNeighbors=5,
