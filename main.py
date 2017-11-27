@@ -20,8 +20,8 @@ back  = None
 
 def main():
     # Initializing all the variables
-    drive = PiMotor("MOTOR1",2)
-    steer = PiMotor("MOTOR2",1)
+    drive = Motor("MOTOR1",2)
+    steer = Motor("MOTOR2",1)
 
     # Camera setup
     cam   = PiCamera()
