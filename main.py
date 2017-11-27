@@ -32,7 +32,7 @@ def main():
     # Camera warm up
     time.sleep(.1)
 
-    for frame in camera.capture_continuous(cap, format='bgr', use_video_port=True):
+    for frame in cam.capture_continuous(cap, format='bgr', use_video_port=True):
         img = frame.array
 
         cv2.imshow("Frame", img)
