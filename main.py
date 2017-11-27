@@ -33,16 +33,18 @@ def main():
     # Camera warm up
     time.sleep(.1)
 
+	# Loop to generate images using the picamera
     for frame in cam.capture_continuous(cap, format='bgr', use_video_port=True):
-        img = frame.array
+		# getting the image from frame
+		img = frame.array
         gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-        faces = cv2.CascadeClassifier("/files/haarcascade_frontalface_default.xml").detectMultiscale(
+        faces = cv2.CascadeClassifier("files/haarcascade_frontalface_default.xml").detectMultiScale(
             gray,
             scaleFactor=1.1,
             minNeighbors=5,
             minSize=(30,30),
-            flags=cv2.cv.CV_HAAR_SCALE_IMAGE
+            flags=cv2.CASCADE_SCALE_IMAGE
         )
 
         for (x,y,w,h) in faces:
