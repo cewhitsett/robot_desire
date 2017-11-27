@@ -2,6 +2,7 @@ from picamera.array import PiRGBArray
 from picamera import PiCamera
 from PiMotor import Motor, Arrow
 import time
+import numpy
 import cv2
 
 class Ultrasonic:
@@ -34,8 +35,19 @@ def main():
 
     for frame in cam.capture_continuous(cap, format='bgr', use_video_port=True):
         img = frame.array
+        gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
 
-        cv2.imshow("Frame", img)
+        faces = faceCascade.detectMultiscale(
+            gray,
+            scaleFactor=1.1,
+            minNeighbors=5,
+            minSize=(30,30),
+            flags=cv2.cv.CV_HAAR_SCALE_IMAGE
+        )
+
+        for (x,y,w,h) in faces:
+            cv2.rectangle(img, (x,y), (x+w, y+h), (0,255,0), 2)
+        cv2.imshow("Face Tracking", img)
         key = cv2.waitKey(1) & 0xFF
 
         cap.truncate(0)
