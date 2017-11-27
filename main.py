@@ -1,19 +1,47 @@
-import picamera
+from picamera.array import PiRGBArray
+from picamera import PiCamera
+from PiMotor import Motor, Arrow
 import time
-# from PiMotor import Motor, Arrow
+import cv2
 
+class Ultrasonic:
+
+    def __init__(self, trig, echo):
+        pass
+
+drive = None
+steer = None
+cam   = None
+cap   = None
+front = None
+left  = None
+right = None
+back  = None
 
 def main():
-    # drive = PiMotor("MOTOR1",2)
-    # steer = PiMotor("MOTOR2",1)
+    # Initializing all the variables
+    drive = PiMotor("MOTOR1",2)
+    steer = PiMotor("MOTOR2",1)
 
-    cam   = picamera.PiCamera()
+    # Camera setup
+    cam   = PiCamera()
+    cam.resolution = (640,480)
+    cam.framerate  = 32
+    cap   = PiRGBArray(cam)
 
-    cam.start_preview()
+    # Camera warm up
+    time.sleep(.1)
 
-    time.sleep(10)
+    for frame in camera.capture_continuous(cap, format='bgr', use_video_port=True):
+        img = frame.array
 
-    cam.stop_preview()
+        cv2.imshow("Frame", img)
+        key = cv2.waitKey(1) & 0xFF
+
+        cap.truncate(0)
+
+        if key == ord('q'):
+            break
 
 
 if __name__ == "__main__":
