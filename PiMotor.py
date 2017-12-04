@@ -301,12 +301,3 @@ class Arrow():
     def off(self):
         GPIO.output(self.pin,GPIO.LOW)
 
-
-if __name__ == "__main__":
-    step1 = Stepper("STEPPER1")
-
-    while True:
-        step1.forward(.1,10)
-        time.sleep(2)
-        step1.backward(.1,10)
-        time.sleep(2)
