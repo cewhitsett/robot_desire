@@ -1,2 +1,2 @@
 # robot_desire
-Project for Robotics Class
+Simple robots art project. Tracks the face of nearby people, but gives remote control to some user.
